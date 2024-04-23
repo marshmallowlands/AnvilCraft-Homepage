@@ -1,39 +1,53 @@
 @ -1,68 +1,98 @@
 <script setup lang="ts">
-import {h, onMounted, reactive, ref, watch} from "vue";
+import {h, onMounted, reactive, ref} from "vue";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  HomeOutlined
+  HomeOutlined,
+  PicLeftOutlined,
+  InfoCircleOutlined,
+  RedEnvelopeOutlined
 } from '@ant-design/icons-vue';
 import {ItemType} from "ant-design-vue";
 import Icon from "./assets/icon.svg";
+import router from "./router/index.ts";
 
 const items = ref<ItemType[]>([
   {
-    key: 'mail',
+    key: 'home',
     icon: () => h(HomeOutlined),
     label: '主页',
-    title: '主页',
+    title: '/',
+  },
+  {
+    key: 'view',
+    icon: () => h(PicLeftOutlined),
+    label: '概览',
+    title: '/view'
+  },
+  {
+    key: 'about',
+    icon: () => h(InfoCircleOutlined),
+    label: '关于',
+    title: '/about'
+  },
+  {
+    key: 'support',
+    icon: () => h(RedEnvelopeOutlined),
+    label: '支持我们',
+    title: '/support'
   }
 ]);
 const state = reactive({
   collapsed: false,
-  selectedKeys: ['mail'],
-  openKeys: [],
-  preOpenKeys: [],
+  selectedKeys: ['home'],
 });
 
-watch(
-    () => state.openKeys,
-    (_val, oldVal) => {
-      state.preOpenKeys = oldVal;
-    },
-);
+router.push('/');
 
 function toggleCollapsed() {
   state.collapsed = !state.collapsed;
-  state.openKeys = state.collapsed ? [] : state.preOpenKeys;
 }
 
 onMounted(() => {
@@ -51,6 +65,10 @@ function getElementAttr(id: string, attr: 'offsetHeight' | 'offsetWidth', variab
     }
   }
 }
+
+function select(page: any) {
+  router.push(page.item.title);
+}
 </script>
 
 <template>
@@ -65,20 +83,17 @@ function getElementAttr(id: string, attr: 'offsetHeight' | 'offsetWidth', variab
       <MenuFoldOutlined v-else/>
     </template>
   </a-page-header>
-  <a-flex gap="middle" :vertical="false">
+  <a-flex :vertical="false">
     <a-menu id="menu" class="menu"
-            v-model:openKeys="state.openKeys"
             v-model:selectedKeys="state.selectedKeys"
             mode="inline"
             :inline-collapsed="state.collapsed"
             :items="items"
+            @select="select"
     />
-    <router-view/>
-    <div id="footer" class="footer">
-      <div>
-        <a-divider style="width:30vh"/>
-        <a-typography-text><a href="https://github.com/Anvil-Dev">© Anvil-Dev</a></a-typography-text>
-      </div>
+    <a-config-provider/>
+    <div class="content">
+      <router-view/>
     </div>
   </a-flex>
 </template>
@@ -90,18 +105,25 @@ function getElementAttr(id: string, attr: 'offsetHeight' | 'offsetWidth', variab
 }
 
 .header {
+  background-color: #ffffff;
   border: 1px solid rgb(235, 237, 240);
 }
 
 .menu {
   max-width: 280px;
   min-height: calc(100vh - var(--header-height));
+  margin: 0;
 }
 
 .footer {
   display: block;
   align-items: center;
-  margin-left: calc((100vw - var(--menu-width))/2);
+  margin-left: calc((100vw - var(--menu-width)) / 2);
   margin-bottom: 16px;
+}
+
+.content {
+  width: 100%;
+  margin: 10px;
 }
 </style>
