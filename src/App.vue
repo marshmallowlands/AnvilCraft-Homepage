@@ -37,32 +37,48 @@ function toggleCollapsed() {
 </script>
 
 <template>
-  <a-page-header
-      id="header"
-      style="border: 1px solid rgb(235, 237, 240);min-height: 10vh;--header-height:10vh"
-      title="铁砧工艺"
-      sub-title="一个原版风科技模组"
-      @back="toggleCollapsed"
-      :avatar="{src:Icon}"
-  >
-    <template #backIcon>
-      <MenuUnfoldOutlined v-if="state.collapsed"/>
-      <MenuFoldOutlined v-else/>
-    </template>
-  </a-page-header>
-  <a-flex gap="middle" :vertical="false" style="height: calc(100vh - var(--header-height));">
-    <a-menu
-        v-model:openKeys="state.openKeys"
-        v-model:selectedKeys="state.selectedKeys"
-        mode="inline"
-        style="max-width: 280px;"
-        :inline-collapsed="state.collapsed"
-        :items="items"
-    />
-    <router-view/>
-  </a-flex>
+  <a-layout>
+    <a-page-header
+        class="app-header"
+        title="铁砧工艺"
+        sub-title="一个原版风科技模组"
+        @back="toggleCollapsed"
+        :avatar="{src:Icon}"
+    >
+      <template #backIcon>
+        <MenuUnfoldOutlined v-if="state.collapsed"/>
+        <MenuFoldOutlined v-else/>
+      </template>
+    </a-page-header>
+    <a-layout>
+      <a-layout-sider class="app-sider">
+        <a-menu
+            v-model:openKeys="state.openKeys"
+            v-model:selectedKeys="state.selectedKeys"
+            mode="inline"
+            style="max-width: 280px;"
+            :inline-collapsed="state.collapsed"
+            :items="items"
+        />
+      </a-layout-sider>
+      <a-layout-content>
+        <router-view/>
+      </a-layout-content>
+    </a-layout>
+  </a-layout>
+
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+$header-height: 10vh;
 
+.app-header {
+  border: 1px solid rgb(235, 237, 240);
+  min-height: 10vh;
+  --header-height: $header-height;
+}
+
+.app-sider {
+  height: 100vh - $header-height;
+}
 </style>
