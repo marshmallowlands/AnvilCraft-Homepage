@@ -7,10 +7,16 @@ import {
   HomeOutlined,
   PicLeftOutlined,
   InfoCircleOutlined,
-  RedEnvelopeOutlined
+  RedEnvelopeOutlined, GithubOutlined
 } from '@ant-design/icons-vue';
 import {ItemType} from "ant-design-vue";
 import Icon from "./assets/icon.svg";
+import Curseforge from "./assets/curseforge.svg";
+import Modrinth from "./assets/modrinth.svg";
+import BiliBili from "./assets/bilibili.svg";
+import Mcmod from "./assets/mcmod.svg";
+import QQ from "./assets/QQ.svg";
+import KOOK from "./assets/kook.svg";
 import router from "./router/index.ts";
 
 const items = ref<ItemType[]>([
@@ -81,6 +87,29 @@ function select(page: any) {
     <template #backIcon>
       <MenuUnfoldOutlined v-if="state.collapsed"/>
       <MenuFoldOutlined v-else/>
+    </template>
+    <template #extra>
+      <a href="https://www.curseforge.com/minecraft/mc-mods/anvilcraft" target="_blank">
+        <a-image :src="Curseforge" style="height:32px;width:32px" :preview="false"/>
+      </a>
+      <a href="https://modrinth.com/mod/anvilcraft" target="_blank">
+        <a-image :src="Modrinth" style="height:32px;width:32px" :preview="false"/>
+      </a>
+      <a href="https://space.bilibili.com/5930630/channel/collectiondetail?sid=2530932" target="_blank">
+        <a-image :src="BiliBili" style="height:32px;width:32px" :preview="false"/>
+      </a>
+      <a href="https://www.mcmod.cn/class/14068.html" target="_blank">
+        <a-image :src="Mcmod" style="height:32px;width:32px" :preview="false"/>
+      </a>
+      <a href="https://github.com/Anvil-Dev/AnvilCraft" target="_blank">
+        <GithubOutlined style="font-size: 30px;color: black"/>
+      </a>
+      <a href="https://qm.qq.com/q/OO9MeRbPIm" target="_blank">
+        <a-image :src="QQ" style="height:32px;width:32px" :preview="false"/>
+      </a>
+      <a href="https://www.kookapp.cn/app/invite/mFBCbM" target="_blank">
+        <a-image :src="KOOK" style="height:32px;width:32px;" :preview="false"/>
+      </a>
     </template>
   </a-page-header>
   <a-flex :vertical="false">

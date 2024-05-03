@@ -1,47 +1,89 @@
 <script setup lang="ts">
 import {UserFilled} from "@element-plus/icons-vue";
-import {ref} from "vue";
+import Supporters from "../assets/supporters.json";
+import Authors from "../assets/authors.json";
+import Contributors from "../assets/contributors.json";
+import BiliBili from "../assets/bilibili.svg";
 
-const infos = ref([
-  {
-    name: "XeKr",
-    avatar: "https://avatars.githubusercontent.com/u/45423407",
-    desc: [
-      "建筑学在读博士，TIS成员，游戏方面主要擅长各类建筑。有一段时间经常在视频、直播乃至别人的直播中推销自制的方纹系列纹理包（原方纹淡彩、方纹中古等）以及红石显示纹理包，因而凡有主播使用这些纹理包都会有人戏称“XK打钱”（“广告费”）。在TIS服务器陷入风波时依然不忘推销纹理包，堪称Minecraft up主中的东京电视台。",
-      "红石方面也有不少建树，不仅能做出机器还能把机器装修得外观优美。其制作的红石显示纹理包使用方便，设计科学，已经成为Minecraft红石类视频中较为常见的纹理包。制作过24合一的超级工厂、炼药机等红石机器，以及没什么用但是很有趣的沙雕红石系列"
-    ],
-    copyright: {
-      name: "萌娘百科",
-      link: "https://zh.moegirl.org.cn/XeKr"
-    }
-  },
-  {
-    name: "古镇天Gugle",
-    avatar: "https://avatars.githubusercontent.com/u/34372427",
-    desc: [
-      "菜狗"
-    ]
-  }
-]);
-
+Supporters.sort((a, b) => b.money - a.money)
 </script>
 
 <template>
-  <a-card class="card" hoverable bordered v-for="info in infos">
-    <a-card>
-      <template #title>
-        <a-avatar size="large" style="background: #000">
-          <template #icon>
-            <a-image :src="info.avatar"/>
+  <a v-for="author in Authors" :href="author.link" target="_blank">
+    <a-badge-ribbon :text="author.work">
+      <a-card class="main-card" hoverable bordered>
+        <template #title>
+          <a-avatar size="large" :src="author.avatar">
+            <template #icon>
+              <UserFilled/>
+            </template>
+          </a-avatar>
+          {{ author.name }}
+        </template>
+        <template #extra>
+          <a v-if="author.uid" :href="'https://space.bilibili.com/'+author.uid" target="_blank"
+             style="margin-right: 80px">
+            <a-image :src="BiliBili" style="height:32px;width:32px" :preview="false"/>
+          </a>
+        </template>
+        <p v-for="desc in author.desc">
+          {{ desc }}
+        </p>
+        <p class="copy" v-if="author.copyright">——引自<a :href="author.copyright.link" target="_blank">{{
+            author.copyright.name
+          }}</a></p>
+      </a-card>
+    </a-badge-ribbon>
+  </a>
+
+  <a-card class="main-card" hoverable bordered>
+    <template #title>
+      贡献者
+    </template>
+    <a v-for="contributor in Contributors" :href="contributor.link" target="_blank">
+      <a-badge-ribbon :text="contributor.work" color="green">
+        <a-card class="sub-card" hoverable bordered>
+          <template #extra>
+            <a v-if="contributor.uid" :href="'https://space.bilibili.com/'+contributor.uid" target="_blank"
+               style="margin-right: 80px">
+              <a-image :src="BiliBili" style="height:32px;width:32px" :preview="false"/>
+            </a>
           </template>
-        </a-avatar>
-        {{ info.name }}
-      </template>
-      <p v-for="desc in info.desc">
-        {{ desc }}
-      </p>
-      <p class="copy" v-if="info.copyright">——引自<a :href="info.copyright.link">{{ info.copyright.name }}</a></p>
-    </a-card>
+          <template #title>
+            <a-avatar :src="contributor.avatar" size="large" style="margin: 5px">
+              <template #icon>
+                <UserFilled/>
+              </template>
+            </a-avatar>
+            <a-typography-text style="font-size: 15px">
+              {{ contributor.name }}
+            </a-typography-text>
+          </template>
+        </a-card>
+      </a-badge-ribbon>
+    </a>
+  </a-card>
+
+  <a-card class="main-card" hoverable bordered>
+    <template #title>
+      赞助榜
+    </template>
+    <a v-for="supporter in Supporters" :href="supporter.link" target="_blank">
+      <a-badge-ribbon text="实力富哥💵" color="pink">
+        <a-card hoverable bordered class="sub-card">
+          <template #title>
+            <a-avatar :src="supporter.avatar" size="large" style="margin: 5px">
+              <template #icon>
+                <UserFilled/>
+              </template>
+            </a-avatar>
+            <a-typography-text style="font-size: 15px">
+              {{ supporter.name }}
+            </a-typography-text>
+          </template>
+        </a-card>
+      </a-badge-ribbon>
+    </a>
   </a-card>
 </template>
 
@@ -50,7 +92,11 @@ const infos = ref([
   text-align: right;
 }
 
-.card {
+.main-card {
+  margin: 5px;
+}
+
+.sub-card {
   margin: 5px;
 }
 </style>
