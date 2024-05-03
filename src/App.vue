@@ -57,7 +57,6 @@ const state = reactive({
 router.push('/');
 
 function toggleCollapsed() {
-  console.log(state.collapsed);
   state.collapsed = !state.collapsed;
 }
 
