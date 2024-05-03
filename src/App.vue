@@ -17,7 +17,7 @@ import BiliBili from './assets/bilibili.svg';
 import Mcmod from './assets/mcmod.svg';
 import QQ from './assets/QQ.svg';
 import KOOK from './assets/kook.svg';
-import router from './router/index.ts';
+import router from '@/router/index.ts';
 
 const items = ref([
   {
@@ -104,7 +104,7 @@ function select(page: any) {
     </template>
   </a-page-header>
   <a-layout>
-    <a-layout-sider class="app-sider" :collapsed="state.collapsed" collapsible>
+    <a-layout-sider class="app-sider" :collapsed="state.collapsed" :trigger="null" collapsible>
       <a-menu
         v-model:selectedKeys="state.selectedKeys"
         mode="inline"
