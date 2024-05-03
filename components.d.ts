@@ -7,15 +7,16 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AInput: typeof import('ant-design-vue/es')['Input']
-    ALayout: typeof import('ant-design-vue/es')['Layout']
-    ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
-    ALayoutFooter: typeof import('ant-design-vue/es')['LayoutFooter']
-    ALayoutSider: typeof import('ant-design-vue/es')['LayoutSider']
+    AAvatar: typeof import('ant-design-vue/es')['Avatar']
+    ABadgeRibbon: typeof import('ant-design-vue/es')['BadgeRibbon']
+    ACard: typeof import('ant-design-vue/es')['Card']
+    AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
+    AFlex: typeof import('ant-design-vue/es')['Flex']
+    AImage: typeof import('ant-design-vue/es')['Image']
     AMenu: typeof import('ant-design-vue/es')['Menu']
     APageHeader: typeof import('ant-design-vue/es')['PageHeader']
-    ASlider: typeof import('ant-design-vue/es')['Slider']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    AQrcode: typeof import('ant-design-vue/es')['QRCode']
+    ATypographyText: typeof import('ant-design-vue/es')['TypographyText']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
