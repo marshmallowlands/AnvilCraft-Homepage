@@ -31,7 +31,7 @@ jobs:
       - name: Use pnpm
         run: npm i -g pnpm
       - name: Prepare Dependency
-        run: pnpm ci
+        run: pnpm i
       - name: Build with vue.js
         run: pnpm run build
       - name: Upload artifact

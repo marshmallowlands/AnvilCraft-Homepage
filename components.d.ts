@@ -21,7 +21,6 @@ declare module 'vue' {
     ASlider: typeof import('ant-design-vue/es')['Slider']
     ATypographyParagraph: typeof import('ant-design-vue/es')['TypographyParagraph']
     ATypographyText: typeof import('ant-design-vue/es')['TypographyText']
-    BlockAllCube: typeof import('./src/components/BlockAllCube.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
