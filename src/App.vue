@@ -10,13 +10,13 @@ import {
   RedEnvelopeOutlined,
   GithubOutlined
 } from '@ant-design/icons-vue';
-import Icon from './assets/icon.svg';
-import Curseforge from './assets/curseforge.svg';
-import Modrinth from './assets/modrinth.svg';
-import BiliBili from './assets/bilibili.svg';
-import Mcmod from './assets/mcmod.svg';
-import QQ from './assets/QQ.svg';
-import KOOK from './assets/kook.svg';
+import Icon from '@/assets/icon.svg';
+import Curseforge from '@/assets/curseforge.svg';
+import Modrinth from '@/assets/modrinth.svg';
+import BiliBili from '@/assets/bilibili.svg';
+import Mcmod from '@/assets/mcmod.svg';
+import QQ from '@/assets/QQ.svg';
+import KOOK from '@/assets/kook.svg';
 import router from '@/router/index.ts';
 
 const items = ref([

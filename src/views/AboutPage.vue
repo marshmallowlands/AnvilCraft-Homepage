@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import {UserFilled} from "@element-plus/icons-vue";
-import Supporters from "../assets/supporters.json";
-import Authors from "../assets/authors.json";
-import Contributors from "../assets/contributors.json";
-import BiliBili from "../assets/bilibili.svg";
+import { UserFilled } from '@element-plus/icons-vue';
+import Supporters from '@/assets/supporters.json';
+import Authors from '@/assets/authors.json';
+import Contributors from '@/assets/contributors.json';
+import BiliBili from '@/assets/bilibili.svg';
 
-Supporters.sort((a, b) => b.money - a.money)
+Supporters.sort((a, b) => b.money - a.money);
 </script>
 
 <template>
@@ -15,44 +15,49 @@ Supporters.sort((a, b) => b.money - a.money)
         <template #title>
           <a-avatar size="large" :src="author.avatar">
             <template #icon>
-              <UserFilled/>
+              <UserFilled />
             </template>
           </a-avatar>
           {{ author.name }}
         </template>
         <template #extra>
-          <a v-if="author.uid" :href="'https://space.bilibili.com/'+author.uid" target="_blank"
-             style="margin-right: 80px">
-            <a-image :src="BiliBili" style="height:32px;width:32px" :preview="false"/>
+          <a
+            v-if="author.uid"
+            :href="'https://space.bilibili.com/' + author.uid"
+            target="_blank"
+            style="margin-right: 80px">
+            <a-image :src="BiliBili" style="height: 32px; width: 32px" :preview="false" />
           </a>
         </template>
         <p v-for="desc in author.desc">
           {{ desc }}
         </p>
-        <p class="copy" v-if="author.copyright">——引自<a :href="author.copyright.link" target="_blank">{{
-            author.copyright.name
-          }}</a></p>
+        <p class="copy" v-if="author.copyright">
+          ——引自
+          <a :href="author.copyright.link" target="_blank">{{ author.copyright.name }}</a>
+        </p>
       </a-card>
     </a-badge-ribbon>
   </a>
 
   <a-card class="main-card" hoverable bordered>
-    <template #title>
-      贡献者
-    </template>
+    <template #title>贡献者</template>
     <a v-for="contributor in Contributors" :href="contributor.link" target="_blank">
       <a-badge-ribbon :text="contributor.work" color="green">
         <a-card class="sub-card" hoverable bordered>
           <template #extra>
-            <a v-if="contributor.uid" :href="'https://space.bilibili.com/'+contributor.uid" target="_blank"
-               style="margin-right: 80px">
-              <a-image :src="BiliBili" style="height:32px;width:32px" :preview="false"/>
+            <a
+              v-if="contributor.uid"
+              :href="'https://space.bilibili.com/' + contributor.uid"
+              target="_blank"
+              style="margin-right: 80px">
+              <a-image :src="BiliBili" style="height: 32px; width: 32px" :preview="false" />
             </a>
           </template>
           <template #title>
             <a-avatar :src="contributor.avatar" size="large" style="margin: 5px">
               <template #icon>
-                <UserFilled/>
+                <UserFilled />
               </template>
             </a-avatar>
             <a-typography-text style="font-size: 15px">
@@ -65,16 +70,14 @@ Supporters.sort((a, b) => b.money - a.money)
   </a-card>
 
   <a-card class="main-card" hoverable bordered>
-    <template #title>
-      赞助榜
-    </template>
+    <template #title>赞助榜</template>
     <a v-for="supporter in Supporters" :href="supporter.link" target="_blank">
       <a-badge-ribbon text="实力富哥💵" color="pink">
         <a-card hoverable bordered class="sub-card">
           <template #title>
             <a-avatar :src="supporter.avatar" size="large" style="margin: 5px">
               <template #icon>
-                <UserFilled/>
+                <UserFilled />
               </template>
             </a-avatar>
             <a-typography-text style="font-size: 15px">

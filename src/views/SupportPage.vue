@@ -1,14 +1,14 @@
 <script setup lang="ts">
 const qrcodes = [
   {
-    name: "支付宝",
-    value: "https://qr.alipay.com/fkx189991xm3pdujnw1mxb0"
+    name: '支付宝',
+    value: 'https://qr.alipay.com/fkx189991xm3pdujnw1mxb0'
   },
   {
-    name: "微信",
-    value: "wxp://f2f0-fpSqA1Q3ig3rSGlxpZzq5HfND8n5JYnqJK1ecp29scXBlRx2gKE_9JLIaJL4_Di"
+    name: '微信',
+    value: 'wxp://f2f0-fpSqA1Q3ig3rSGlxpZzq5HfND8n5JYnqJK1ecp29scXBlRx2gKE_9JLIaJL4_Di'
   }
-]
+];
 </script>
 
 <template>
@@ -17,12 +17,11 @@ const qrcodes = [
       <template #title>
         <a-typography-text style="font-size: 50px">
           {{ qrcode.name }}
-        </a-typography-text><br>
-        <a-typography-text style="color: darkgray">
-          请备注称呼、游戏ID和B站UID
         </a-typography-text>
+        <br />
+        <a-typography-text style="color: darkgray">请备注称呼、游戏ID和B站UID</a-typography-text>
       </template>
-      <a-qrcode size="300" :value="qrcode.value"/>
+      <a-qrcode size="300" :value="qrcode.value" />
     </a-card>
   </div>
 </template>
