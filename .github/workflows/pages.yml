@@ -22,17 +22,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
-        run: |
-          curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-          sudo apt-get install -y nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
+      - name: Prepare Dependency
+        run: pnpm ci
       - name: Build with vue.js
-        run: |
-          npm install -g @vue/cli
-          npm install --legacy-peer-deps
-          npm run build
+        run: pnpm run build --if-present
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
