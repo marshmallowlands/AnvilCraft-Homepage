@@ -10,6 +10,7 @@ declare module 'vue' {
     AAvatar: typeof import('ant-design-vue/es')['Avatar']
     ABadgeRibbon: typeof import('ant-design-vue/es')['BadgeRibbon']
     ACard: typeof import('ant-design-vue/es')['Card']
+    ADivider: typeof import('ant-design-vue/es')['Divider']
     AImage: typeof import('ant-design-vue/es')['Image']
     ALayout: typeof import('ant-design-vue/es')['Layout']
     ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
@@ -18,7 +19,9 @@ declare module 'vue' {
     APageHeader: typeof import('ant-design-vue/es')['PageHeader']
     AQrcode: typeof import('ant-design-vue/es')['QRCode']
     ASlider: typeof import('ant-design-vue/es')['Slider']
+    ATypographyParagraph: typeof import('ant-design-vue/es')['TypographyParagraph']
     ATypographyText: typeof import('ant-design-vue/es')['TypographyText']
+    BlockAllCube: typeof import('./src/components/BlockAllCube.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
