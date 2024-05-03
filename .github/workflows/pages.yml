@@ -25,7 +25,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
+          cache: 'npm'
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
@@ -34,7 +34,7 @@ jobs:
       - name: Prepare Dependency
         run: pnpm ci
       - name: Build with vue.js
-        run: pnpm run build --if-present
+        run: pnpm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
