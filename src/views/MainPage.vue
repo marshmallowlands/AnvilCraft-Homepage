@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ImageFill from '@/assets/image-fill.svg';
+import Banner from '@/assets/banner.png';
 </script>
 
 <template>
@@ -9,7 +10,7 @@ import ImageFill from '@/assets/image-fill.svg';
         :width="640"
         :height="360"
         style="width: 100%"
-        src="https://www.antdv.com/#error"
+        :src="Banner"
         :fallback="ImageFill" />
     </div>
     <a-divider />
