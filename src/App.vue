@@ -48,12 +48,11 @@ const items = ref([
     url: '/support'
   }
 ]);
+
 const state = reactive({
   collapsed: false,
-  selectedKeys: ['home']
+  selectedKeys: [window.location.href.split('/').pop() || 'home']
 });
-
-router.push('/');
 
 function toggleCollapsed() {
   state.collapsed = !state.collapsed;
