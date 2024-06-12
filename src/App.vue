@@ -10,11 +10,12 @@ import {
   RedEnvelopeOutlined
 } from '@ant-design/icons-vue';
 import {createFromIconfontCN} from '@ant-design/icons-vue';
+import Urls from '@/assets/urls.json';
 import Icon from '@/assets/icon.svg';
 import router from '@/router/index.ts';
 
 const IconFont = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/c/font_4583291_sbz536mbo0k.js',
+  scriptUrl: '//at.alicdn.com/t/c/font_4583291_rt4yqubcpzs.js',
 });
 
 const items = ref([
@@ -76,27 +77,14 @@ function select(page: any) {
     </template>
     <template #extra>
       <a-space class="url-list">
-        <a href="https://www.curseforge.com/minecraft/mc-mods/anvilcraft" target="_blank">
-          <icon-font class="icon" type="icon-curseforge"/>
-        </a>
-        <a href="https://modrinth.com/mod/anvilcraft" target="_blank">
-          <icon-font class="icon" type="icon-modrinth"/>
-        </a>
-        <a href="https://space.bilibili.com/5930630/channel/collectiondetail?sid=2530932" target="_blank">
-          <icon-font class="icon" type="icon-bilibili"/>
-        </a>
-        <a href="https://www.mcmod.cn/class/14068.html" target="_blank">
-          <icon-font class="icon" type="icon-mcmod"/>
-        </a>
-        <a href="https://github.com/Anvil-Dev/AnvilCraft" target="_blank">
-          <icon-font class="icon" type="icon-github"/>
-        </a>
-        <a href="https://qm.qq.com/q/OO9MeRbPIm" target="_blank">
-          <icon-font class="icon" type="icon-QQ"/>
-        </a>
-        <a href="https://chat.xiaoheihe.cn/ibjvvo" target="_blank">
-          <icon-font class="icon" type="icon-heybox"/>
-        </a>
+        <a-tooltip v-for="url in Urls" placement="left">
+          <template #title>
+            <span>{{ url.tip }}</span>
+          </template>
+          <a :href="url.url" target="_blank">
+            <icon-font class="icon" :type="'icon-'+url.icon"/>
+          </a>
+        </a-tooltip>
       </a-space>
     </template>
   </a-page-header>
