@@ -1,23 +1,21 @@
 @ -1,68 +1,98 @@
 <script setup lang="ts">
-import { h, reactive, ref } from 'vue';
+import {h, reactive, ref} from 'vue';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   HomeOutlined,
   PicLeftOutlined,
   InfoCircleOutlined,
-  RedEnvelopeOutlined,
-  GithubOutlined
+  RedEnvelopeOutlined
 } from '@ant-design/icons-vue';
+import {createFromIconfontCN} from '@ant-design/icons-vue';
 import Icon from '@/assets/icon.svg';
-import Curseforge from '@/assets/curseforge.svg';
-import Modrinth from '@/assets/modrinth.svg';
-import BiliBili from '@/assets/bilibili.svg';
-import Mcmod from '@/assets/mcmod.svg';
-import QQ from '@/assets/QQ.svg';
-import KOOK from '@/assets/kook.svg';
 import router from '@/router/index.ts';
+
+const IconFont = createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/c/font_4583291_sbz536mbo0k.js',
+});
 
 const items = ref([
   {
@@ -67,54 +65,54 @@ function select(page: any) {
 
 <template>
   <a-page-header
-    class="app-header"
-    title="铁砧工艺"
-    sub-title="一个原版风科技模组"
-    @back="toggleCollapsed"
-    :avatar="{ src: Icon }">
+      class="app-header"
+      title="铁砧工艺"
+      sub-title="一个原版风科技模组"
+      @back="toggleCollapsed"
+      :avatar="{ src: Icon }">
     <template #backIcon>
-      <MenuUnfoldOutlined v-if="state.collapsed" />
-      <MenuFoldOutlined v-else />
+      <MenuUnfoldOutlined v-if="state.collapsed"/>
+      <MenuFoldOutlined v-else/>
     </template>
     <template #extra>
-      <a href="https://www.curseforge.com/minecraft/mc-mods/anvilcraft" target="_blank">
-        <a-image :src="Curseforge" style="height: 32px; width: 32px" :preview="false" />
-      </a>
-      <a href="https://modrinth.com/mod/anvilcraft" target="_blank">
-        <a-image :src="Modrinth" style="height: 32px; width: 32px" :preview="false" />
-      </a>
-      <a
-        href="https://space.bilibili.com/5930630/channel/collectiondetail?sid=2530932"
-        target="_blank">
-        <a-image :src="BiliBili" style="height: 32px; width: 32px" :preview="false" />
-      </a>
-      <a href="https://www.mcmod.cn/class/14068.html" target="_blank">
-        <a-image :src="Mcmod" style="height: 32px; width: 32px" :preview="false" />
-      </a>
-      <a href="https://github.com/Anvil-Dev/AnvilCraft" target="_blank">
-        <GithubOutlined style="font-size: 30px; color: black" />
-      </a>
-      <a href="https://qm.qq.com/q/OO9MeRbPIm" target="_blank">
-        <a-image :src="QQ" style="height: 32px; width: 32px" :preview="false" />
-      </a>
-      <a href="https://www.kookapp.cn/app/invite/mFBCbM" target="_blank">
-        <a-image :src="KOOK" style="height: 32px; width: 32px" :preview="false" />
-      </a>
+      <a-space class="url-list">
+        <a href="https://www.curseforge.com/minecraft/mc-mods/anvilcraft" target="_blank">
+          <icon-font class="icon" type="icon-curseforge"/>
+        </a>
+        <a href="https://modrinth.com/mod/anvilcraft" target="_blank">
+          <icon-font class="icon" type="icon-modrinth"/>
+        </a>
+        <a href="https://space.bilibili.com/5930630/channel/collectiondetail?sid=2530932" target="_blank">
+          <icon-font class="icon" type="icon-bilibili"/>
+        </a>
+        <a href="https://www.mcmod.cn/class/14068.html" target="_blank">
+          <icon-font class="icon" type="icon-mcmod"/>
+        </a>
+        <a href="https://github.com/Anvil-Dev/AnvilCraft" target="_blank">
+          <icon-font class="icon" type="icon-github"/>
+        </a>
+        <a href="https://qm.qq.com/q/OO9MeRbPIm" target="_blank">
+          <icon-font class="icon" type="icon-QQ"/>
+        </a>
+        <a href="https://chat.xiaoheihe.cn/ibjvvo" target="_blank">
+          <icon-font class="icon" type="icon-heybox"/>
+        </a>
+      </a-space>
     </template>
   </a-page-header>
   <a-layout>
     <a-layout-sider class="app-sider" :collapsed="state.collapsed" :trigger="null" collapsible>
       <a-menu
-        v-model:selectedKeys="state.selectedKeys"
-        mode="inline"
-        class="app-menu"
-        :items="items"
-        @select="select" />
+          v-model:selectedKeys="state.selectedKeys"
+          mode="inline"
+          class="app-menu"
+          :items="items"
+          @select="select"/>
     </a-layout-sider>
     <a-layout-content>
       <div class="app-scrollbar">
         <div class="app-content">
-          <router-view />
+          <router-view/>
         </div>
         <div class="app-footer">
           <span>
@@ -129,6 +127,7 @@ function select(page: any) {
 
 <style scoped lang="scss">
 .app-header {
+  max-height: 81px;
   border: 1px solid rgb(235, 237, 240);
   background-color: #ffffff;
 }
@@ -143,7 +142,7 @@ function select(page: any) {
 }
 
 .app-scrollbar {
-  height: calc(100vh - 82px);
+  height: calc(100vh - 81px);
   overflow: auto;
   scrollbar-gutter: stable;
 }
@@ -158,5 +157,11 @@ function select(page: any) {
 .app-content {
   margin: 5px;
   min-height: calc(100vh - 173px);
+}
+
+.url-list {
+  font-size: 32px;
+  text-align: center;
+  max-height: 32px;
 }
 </style>

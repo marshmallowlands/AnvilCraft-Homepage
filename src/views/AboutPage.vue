@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { UserFilled } from '@element-plus/icons-vue';
+import {UserFilled} from '@element-plus/icons-vue';
 import Supporters from '@/assets/supporters.json';
 import Authors from '@/assets/authors.json';
 import Contributors from '@/assets/contributors.json';
-import BiliBili from '@/assets/bilibili.svg';
+import {createFromIconfontCN} from '@ant-design/icons-vue';
 
 Supporters.sort((a, b) => b.money - a.money);
+
+const IconFont = createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/c/font_4583291_sbz536mbo0k.js',
+});
 </script>
 
 <template>
@@ -15,18 +19,18 @@ Supporters.sort((a, b) => b.money - a.money);
         <template #title>
           <a-avatar size="large" :src="author.avatar">
             <template #icon>
-              <UserFilled />
+              <UserFilled/>
             </template>
           </a-avatar>
           {{ author.name }}
         </template>
         <template #extra>
           <a
-            v-if="author.uid"
-            :href="'https://space.bilibili.com/' + author.uid"
-            target="_blank"
-            style="margin-right: 80px">
-            <a-image :src="BiliBili" style="height: 32px; width: 32px" :preview="false" />
+              v-if="author.uid"
+              :href="'https://space.bilibili.com/' + author.uid"
+              target="_blank"
+              style="margin-right: 80px;font-size: 32px">
+            <icon-font class="icon" type="icon-bilibili"/>
           </a>
         </template>
         <p v-for="desc in author.desc">
@@ -47,17 +51,17 @@ Supporters.sort((a, b) => b.money - a.money);
         <a-card class="sub-card" hoverable bordered>
           <template #extra>
             <a
-              v-if="contributor.uid"
-              :href="'https://space.bilibili.com/' + contributor.uid"
-              target="_blank"
-              style="margin-right: 80px">
-              <a-image :src="BiliBili" style="height: 32px; width: 32px" :preview="false" />
+                v-if="contributor.uid"
+                :href="'https://space.bilibili.com/' + contributor.uid"
+                target="_blank"
+                style="margin-right: 80px;font-size: 32px">
+              <icon-font class="icon" type="icon-bilibili"/>
             </a>
           </template>
           <template #title>
             <a-avatar :src="contributor.avatar" size="large" style="margin: 5px">
               <template #icon>
-                <UserFilled />
+                <UserFilled/>
               </template>
             </a-avatar>
             <a-typography-text style="font-size: 15px">
@@ -77,7 +81,7 @@ Supporters.sort((a, b) => b.money - a.money);
           <template #title>
             <a-avatar :src="supporter.avatar" size="large" style="margin: 5px">
               <template #icon>
-                <UserFilled />
+                <UserFilled/>
               </template>
             </a-avatar>
             <a-typography-text style="font-size: 15px">

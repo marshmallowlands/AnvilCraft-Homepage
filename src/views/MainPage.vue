@@ -1,17 +1,11 @@
 <script setup lang="ts">
-import ImageFill from '@/assets/image-fill.svg';
 import Banner from '@/assets/banner.png';
 </script>
 
 <template>
   <a-card hoverable bordered>
     <div style="width: 100%; text-align: center">
-      <a-image
-        :width="640"
-        :height="360"
-        style="width: 100%"
-        :src="Banner"
-        :fallback="ImageFill" />
+      <a-image :width="640" :height="360" style="width: 100%" :src="Banner"/>
     </div>
     <a-divider />
     <a-typography-paragraph>
