@@ -7,7 +7,9 @@ import {
   HomeOutlined,
   PicLeftOutlined,
   InfoCircleOutlined,
-  RedEnvelopeOutlined
+  RedEnvelopeOutlined,
+  AppstoreOutlined,
+  CloudOutlined,
 } from '@ant-design/icons-vue';
 import {createFromIconfontCN} from '@ant-design/icons-vue';
 import Urls from '@/assets/urls.json';
@@ -23,29 +25,39 @@ const items = ref([
     key: 'home',
     icon: () => h(HomeOutlined),
     label: '主页',
-    title: '主页',
-    url: '/'
+    title: '主页'
   },
   {
     key: 'view',
     icon: () => h(PicLeftOutlined),
     label: '概览',
-    title: '概览',
-    url: '/view'
+    title: '概览'
   },
   {
     key: 'about',
     icon: () => h(InfoCircleOutlined),
     label: '关于',
-    title: '关于',
-    url: '/about'
+    title: '关于'
   },
   {
     key: 'support',
     icon: () => h(RedEnvelopeOutlined),
     label: '支持我们',
-    title: '支持我们',
-    url: '/support'
+    title: '支持我们'
+  },
+  {
+    key: 'additional',
+    icon: () => h(AppstoreOutlined),
+    label: '附加包',
+    title: '附加包',
+    children: [
+      {
+        key: 'skyland',
+        icon: () => h(CloudOutlined),
+        label: '空岛附加',
+        title: '空岛附加'
+      }
+    ]
   }
 ]);
 
@@ -59,7 +71,12 @@ function toggleCollapsed() {
 }
 
 function select(page: any) {
-  router.push(page.item.url);
+  let path: string = '';
+  for (let p of page.keyPath) {
+    path += '/' + p
+  }
+  path = path === '/home' ? '/' : path;
+  router.push(path);
 }
 </script>
 

@@ -21,7 +21,7 @@ const qrcodes = [
         <br />
         <a-typography-text style="color: darkgray">请备注称呼、游戏ID和B站UID</a-typography-text>
       </template>
-      <a-qrcode size="300" :value="qrcode.value" />
+      <a-qrcode :size="300" :value="qrcode.value" />
     </a-card>
   </div>
 </template>
