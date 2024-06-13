@@ -61,9 +61,20 @@ const items = ref([
   }
 ]);
 
+let hrefs = window.location.href.split('/');
+let temp: any = '';
+let keys: string[] = [];
+
+hrefs.pop()
+while (temp !== '#') {
+  temp = hrefs.pop();
+  if (temp !== '#') keys.push(temp);
+}
+
 const state = reactive({
   collapsed: false,
-  selectedKeys: [window.location.href.split('/').pop() || 'home']
+  selectedKeys: [window.location.href.split('/').pop() || 'home'],
+  openKeys: keys,
 });
 
 function toggleCollapsed() {
@@ -77,6 +88,7 @@ function select(page: any) {
   }
   path = path === '/home' ? '/' : path;
   router.push(path);
+  console.log(state);
 }
 </script>
 
@@ -108,6 +120,7 @@ function select(page: any) {
     <a-layout-sider class="app-sider" :collapsed="state.collapsed" :trigger="null" collapsible>
       <a-menu
           v-model:selectedKeys="state.selectedKeys"
+          v-model:open-keys="state.openKeys"
           mode="inline"
           class="app-menu"
           :items="items"
