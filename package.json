@@ -1,5 +1,7 @@
 {
   "devDependencies": {
+    "@types/node": "^24.3.0",
+    "vite-plugin-copy": "^0.1.6",
     "vitepress": "^1.6.4"
   },
   "scripts": {

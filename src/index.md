@@ -20,7 +20,7 @@ hero:
       text: Github
       link: https://github.com/Anvil-Dev
   image:
-    src: /img/index/Anvilcraft.png
+    src: /index/Anvilcraft.png
 
 features:
   - 
@@ -52,8 +52,8 @@ features:
   .image-bg {
     border-radius: 100vh !important;
   }
-  .VPHome[data-v-441e4bfa] {
-    margin-bottom: 40px;
+  .VPHome {
+    margin-bottom: 40px !important;
   }
 </style>
 

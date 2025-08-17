@@ -1,16 +1,18 @@
 import { defineConfig } from 'vitepress'
-const base = "/AnvilCraft-Homepage/"
+import DefaultTheme from 'vitepress/theme-without-fonts'
+const base = '/AnvilCraft-Homepage/'
 
 // https://vitepress.dev/reference/site-config
 // .vitepress/config.js
 export default defineConfig({
   base,
+  srcDir: 'src',
   title: "AnvilCraft 铁砧工艺",
   description: "一个原版风科技模组",
   lang: "zh-CN",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: '/img/index/favicon.svg',
+    logo: '/logo.svg',
     nav: [
       { text: '主页', link: '/' },
       { text: '信息', link: '/View' },
