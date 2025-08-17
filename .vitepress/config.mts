@@ -10,14 +10,13 @@ export default defineConfig({
   lang: "zh-CN",
   head: [
     // 配置网站的图标（显示在浏览器的 tab 上）
-    ["link", { rel: "icon", href: `/favicon.svg` }],
+    ["link", { rel: "icon", href: `favicon.svg` }],
   ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主页', link: '/' },
       { text: '信息', link: '/View' },
-      { text: 'Change Logs', link: '/Changelog' },
       { text: '关于支持赞助', link: '/about' }
     ],
 
