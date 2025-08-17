@@ -8,12 +8,9 @@ export default defineConfig({
   title: "AnvilCraft 铁砧工艺",
   description: "一个原版风科技模组",
   lang: "zh-CN",
-  head: [
-    // 配置网站的图标（显示在浏览器的 tab 上）
-    ["link", { rel: "icon", href: `favicon.svg` }],
-  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    logo: '/img/index/favicon.svg',
     nav: [
       { text: '主页', link: '/' },
       { text: '信息', link: '/View' },

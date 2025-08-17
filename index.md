@@ -20,7 +20,7 @@ hero:
       text: Github
       link: https://github.com/Anvil-Dev
   image:
-    src: img/Anvilcraft.png
+    src: /img/index/Anvilcraft.png
 
 features:
   - 
