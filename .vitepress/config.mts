@@ -1,10 +1,17 @@
 import { defineConfig } from 'vitepress'
+const base = "/AnvilCraft-Homepage/"
 
 // https://vitepress.dev/reference/site-config
+// .vitepress/config.js
 export default defineConfig({
-  title: "AnvilCraft 铁砧工艺 [ WEB Dev mode ]",
+  base,
+  title: "AnvilCraft 铁砧工艺",
   description: "一个原版风科技模组",
   lang: "zh-CN",
+  head: [
+    // 配置网站的图标（显示在浏览器的 tab 上）
+    ["link", { rel: "icon", href: `/favicon.svg` }],
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -13,6 +20,7 @@ export default defineConfig({
       { text: 'Change Logs', link: '/Changelog' },
       { text: '关于支持赞助', link: '/about' }
     ],
+
     // sidebar: [
     //   {
     //     text: 'Examples',
@@ -22,7 +30,6 @@ export default defineConfig({
     //     ]
     //   }
     // ],
-    
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Anvil-Dev' },
