@@ -1,3 +1,4 @@
+import { link } from 'fs'
 import { defineConfig } from 'vitepress'
 import DefaultTheme from 'vitepress/theme-without-fonts'
 const base = '/AnvilCraft-Homepage/'
@@ -9,10 +10,13 @@ export default defineConfig({
   srcDir: 'src',
   title: "AnvilCraft 铁砧工艺",
   description: "一个原版风科技模组",
+  head: [
+    ['link',{rel:'icon',href:'favicons.svg'}]
+  ],
   lang: "zh-CN",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: '/logo.svg',
+    logo: '/favicons.svg',
     nav: [
       { text: '主页', link: '/' },
       { text: '信息', link: '/View' },

@@ -42,6 +42,7 @@ features:
 ---
 
 <style>
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
@@ -60,7 +61,7 @@ features:
 <hr>
 
 <center style="padding-top:20px">
-  © 模组由 AnvilCraft 团队开发，网页设计由 塔兰达尔 维护
+  © 模组由 AnvilCraft 团队开发，网页设计由<a href="https://marshmallowlands.github.io/">塔兰达尔</a>维护
   <br>
-  Powered by <span style="color:#21aed4;font-weight:bold">VitePress</span>
+  Powered by <a href="https://vitepress.dev/">VitePress</a>
 </center>
